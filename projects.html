@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Samana Shrestha</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Droid Sans' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet'>
+  <style>
+
+
+body{
+    font-family: 'Droid Sans';
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    color: rgb(214, 168, 4);
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-size: 12px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+   #wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    /*z-index: 1000;*/
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: white;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+
+#page-content-wrapper {
+    width: 95%;
+    position: absolute;
+    padding: 15px;
+    margin-right: 40px;
+    top: 80px;
+    margin-bottom: 140px;
+}
+
+
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 80px;
+    width: 200px;
+    margin-left: 50px;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    background: rgba(255,255,255,0.2);
+    color: rgb(206, 170, 28);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    color: rgb(206, 170, 28);
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 100px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand > .sidebar-brand-sub {
+    font-size: 12px;
+    margin-top: -35px;
+    color: rgb(4, 161, 219);
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: rgb(206, 170, 28);
+    background: none;
+}
+
+.sidebar-nav > .selected a {
+    color: rgb(214, 168, 4);
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+
+
+
+    .pad-btm{
+      margin-top: 100px;
+      margin-bottom: 100px; 
+    }
+    #topPad {
+      margin-top: 58px;
+    }
+
+
+* {
+  box-sizing: border-box;
+}
+
+.row > .column {
+  padding: 0 8px;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  opacity: 20%;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 80%;
+  max-width: 1200px;
+  text-align:center;
+}
+
+.close {
+  color: gray;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  margin: 0px auto;
+
+}
+
+.cursor {
+  cursor: pointer
+}
+
+#rotImg{ 
+  /*-webkit-transform: rotate(90deg); */
+  height: 50%;
+  width: 50%;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: gray;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.prev{
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  background-color: white;
+  padding: 2px 16px;
+}
+
+
+
+#caption{
+  font-family: 'Quicksand', Light;
+  font-size: 15px;
+  font-weight: 100;
+  padding-top: 60px;
+  margin-bottom: -20px;
+  text-align: right;
+  padding-right: 50px;
+  color: rgb(124, 125, 130);
+}
+
+.slideShow {
+  opacity: 0.6;
+}
+
+.active,
+.slideShow:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+
+    footer {
+      background-color: white;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="index.html">
+                        Samana Shrestha
+                    </a>
+                    <a href="mailto:webmaster@example.com" class = "sidebar-brand-sub">
+                        sashrestha@vassar.edu
+                    </a>
+                </li>
+                <li>
+                  <a href = "index.html"> Home </a>
+                </li>
+                <li class="dropdown">
+                    <a href="works.html" class="dropbtn">Selected Works</a>
+                  <div class="dropdown-content">
+                    <a href="projects.html" class = "selected" style="color: rgb(214, 168, 4)" >Class Projects</a>
+                    <a href="educational.html">Educational Illustrations</a>
+                    <a href="comic.html">Comic Illustrations</a>
+                    <a href="brochures.html">Brochures and Posters</a>
+                  </div>
+                </li>
+                <!-- <li>
+                    <a href="contact.html">Contact</a>
+                </li> -->
+            </ul>
+        </div>
+  <div class="main-content">          
+    <div class="container text-center">    
+  <div class="col-sm-offset-3 row pad-btm" >
+    <div class="col-md-4">
+      <img src="img/projects/foldingProject.JPG" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" style="width:60%" alt="Tomato">
+    </div>
+    <div class="col-md-4">
+      <img src="img/projects/foldingMantis.JPG" onclick="openModal();currentSlide(2)" class="hover-shadow cursor" style="width:100%" alt="CappyMon">
+    </div>
+    <div class="col-md-4">
+      <img src="img/projects/print1.JPG" onclick="openModal();currentSlide(3)" class="hover-shadow cursor" style="width:100%" alt="Cinnamon">
+    </div>
+  </div>
+  <div class="col-sm-offset-3 row pad-btm">
+    <div class="col-md-4">
+      <img src="img/projects/print2.JPG" onclick="openModal();currentSlide(4)" class="hover-shadow cursor" style="width:100%" alt="soldSoul">
+    </div>
+    <div class="col-md-4">
+      <img src="img/projects/print3.JPG" onclick="openModal();currentSlide(5)" class="hover-shadow cursor" style="width:100%" alt="spotted">
+    </div>
+    <div class="col-md-4">
+      <img src="img/projects/print4.JPG" onclick="openModal();currentSlide(6)" class="hover-shadow cursor" style="width:100%" alt="nilda">
+    </div>
+  </div>
+   <div class="col-sm-offset-3 row pad-btm">
+    <div class="col-md-4">
+      <img src="img/projects/print5.JPG" onclick="openModal();currentSlide(7)" class="hover-shadow cursor" style="width:100%" alt="valentine">
+    </div>
+    <div class="col-md-4">
+      <img src="img/projects/print6.JPG" onclick="openModal();currentSlide(8)" class="hover-shadow cursor" style="width:100%" alt="walls">
+    </div>
+    <div class="col-md-4">
+      <img src="img/projects/print7.JPG" onclick="openModal();currentSlide(9)" class="hover-shadow cursor" style="width:100%" alt="spotted">
+    </div>
+  </div>
+  <div class="col-sm-offset-3 row pad-btm">
+    <div class="col-md-4">
+      <img src="img/projects/print8.JPG" onclick="openModal();currentSlide(10)" class="hover-shadow cursor" style="width:100%" alt="nilda">
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+  <br><br>
+
+<div id="myModal" class="modal">
+  <span class="close cursor" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+
+    <div class="mySlides">
+      <img src="img/projects/foldingProject.JPG" style="width: 40%">
+      <p id = "caption"> 3D structure using paper folding </p>
+    </div>
+
+    <div class="mySlides">
+      <img src="img/projects/foldingMantis.JPG" style="width:60%">
+      <p id = "caption"> Paper praying mantis using 3D modeling (Rhinoceros) and meshes (123D Make) </p>
+    </div>
+
+    <div class="mySlides">
+      <img src="img/projects/print1.JPG" style="width:80%">
+      <p id = "caption"> Monoprint using oil based inks and fabric </p>
+    </div>
+    
+    <div class="mySlides">
+      <img src="img/projects/print2.JPG" style="width:80%">
+      <p id = "caption">  Monoprint using oil based inks and fabric </p>
+    </div>
+
+    <div class="mySlides">
+      <img src="img/projects/print3.JPG" style="width:60%">
+      <p id = "caption">  Monotype print using oil based inks and solvents (denatured alcohol, mineral spirit) </p>
+
+    </div>
+
+    <div class="mySlides">
+      <img src="img/projects/print4.JPG" style="width:60%">
+      <p id = "caption"> Monoprint using oil based inks and fabric </p>
+    </div>
+
+    <div class="mySlides">
+      <img src="img/projects/print5.JPG" style="width:60%">
+      <p id = "caption"> Monoprint using oil based inks and fabric </p>
+    </div>
+    
+    <div class="mySlides">
+      <img src="img/projects/print6.JPG" style="width:60%">
+      <p id = "caption">  Monotype print using oil based inks and solvents (denatured alcohol, mineral spirit) </p>
+    </div>
+
+     <div class="mySlides">
+      <img src="img/projects/print7.JPG" style="width:80%">
+      <p id = "caption">  Base board for a Collagraph print with textured materials and shellac </p>
+    </div>
+    
+    <div class="mySlides">
+      <img src="img/projects/print8.JPG" style="width:80%">
+      <p id = "caption">  Base board for a Collagraph print with textured materials and shellac </p>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+
+
+    
+
+
+  </div>
+</div>
+
+
+<footer class="container-fluid text-center">
+  <p></p>
+</footer>
+
+<script>
+function openModal() {
+  document.getElementById('myModal').style.display = "block";
+}
+
+
+function closeModal() {
+  document.getElementById('myModal').style.display = "none";
+
+}
+
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("slideShow");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
+
+    </script>
+
+</body>
+</html>
